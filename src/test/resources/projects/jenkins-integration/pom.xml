@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.smartcodeltd</groupId>
+    <artifactId>sample-project-using-continuous-release-maven-plugin</artifactId>
+    <version>1.7.2-jenkins-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.smartcodeltd</groupId>
+                <artifactId>release-candidate-maven-plugin</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <outputUri>${project.baseUri}/project.properties</outputUri>
+                    <outputTemplate>
+                        PROJECT_VERSION={{ version }}
+                        API_VERSION={{ api_version }}
+                        QUALIFIED_API_VERSION={{ qualified_api_version }}
+                    </outputTemplate>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
